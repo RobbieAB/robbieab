@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>                                                                                                     
+<repositories version="1.0">
+    <repo priority="50" quality="experimental" status="unofficial">
+        <name>robbieab</name>
+        <description>My attempt at an overlay profile</description>
+        <homepage>http://github.com/RobbieAB/robbieab</homepage>
+        <owner>
+            <email>robert@robbieab.com</email>
+        </owner>
+        <source type="git">git://github.com/RobbieAB/robbieab.git</source>
+    </repo>
+</repositories>
