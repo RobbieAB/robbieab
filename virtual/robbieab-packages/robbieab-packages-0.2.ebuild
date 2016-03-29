@@ -19,6 +19,11 @@ DEPEND="
 	sys-process/lsof
 	app-misc/tmux
 	app-portage/gentoolkit
-	sys-apps/usbutils
+	app-portage/layman
+	net-analyzer/traceroute
+	sys-apps/iproute2
+	sys-apps/smartmontools
+	sys-block/parted
+	sys-process/iotop
 "
 RDEPEND="${DEPEND}"
