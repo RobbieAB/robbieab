@@ -65,8 +65,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.4-mtab-sym.patch
 	"${FILESDIR}"/${PN}-1.2.8-cross-build.patch
 	"${FILESDIR}"/${P}-svcgssd_undefined_reference.patch #641912
-	"${FILESDIR}"/0011-exportfs-only-do-glibc-specific-hackery-on-glibc.patch
-	"${FILESDIR}"/musl-getservbyport.patch
+	#"${FILESDIR}"/0011-exportfs-only-do-glibc-specific-hackery-on-glibc.patch
+	#"${FILESDIR}"/musl-getservbyport.patch
 	"${FILESDIR}"/musl-res_querydomain.patch
 	"${FILESDIR}"/limits.patch
 )
