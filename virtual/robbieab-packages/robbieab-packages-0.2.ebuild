@@ -8,7 +8,7 @@ DESCRIPTION="List of packages I want o install everywhere"
 #HOMEPAGE=""
 #SRC_URI=""
 
-LICENSE="GPL-3"
+#LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
