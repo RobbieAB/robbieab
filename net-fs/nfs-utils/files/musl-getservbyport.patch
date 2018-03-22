@@ -1,106 +1,18 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-<title>musl-getservbyport.patch\nfs-utils\main - aports - Main aports tree
-</title>
-<meta name='generator' content='cgit v1.0'/>
-<meta name='robots' content='index, nofollow'/>
-<link rel='stylesheet' type='text/css' href='/cgit.css'/>
-<link rel='shortcut icon' href='//alpinelinux.org/alpine-logo.ico'/>
-<link rel='alternate' title='Atom feed' href='https://git.alpinelinux.org/cgit/aports/atom/main/nfs-utils/musl-getservbyport.patch?h=master' type='application/atom+xml'/>
-<link rel='vcs-git' href='git://git.alpinelinux.org/aports' title='aports Git repository'/>
-<link rel='vcs-git' href='https://git.alpinelinux.org/cgit/aports' title='aports Git repository'/>
-</head>
-<body>
-<div id='cgit'><table id='header'>
-<tr>
-<td class='logo' rowspan='2'><a href='/cgit/'><img src='//wiki.alpinelinux.org/w/resources/assets/alogo.png' alt='cgit logo'/></a></td>
-<td class='main'><a href='/cgit/'>index</a> : <a title='aports' href='/cgit/aports/'>aports</a></td><td class='form'><form method='get'>
-<select name='h' onchange='this.form.submit();'>
-<option value='1.10-stable'>1.10-stable</option>
-<option value='1.9'>1.9</option>
-<option value='2.0-stable'>2.0-stable</option>
-<option value='2.1-stable'>2.1-stable</option>
-<option value='2.2-stable'>2.2-stable</option>
-<option value='2.3-stable'>2.3-stable</option>
-<option value='2.4-stable'>2.4-stable</option>
-<option value='2.5-stable'>2.5-stable</option>
-<option value='2.6-stable'>2.6-stable</option>
-<option value='2.7-stable'>2.7-stable</option>
-<option value='3.0-stable'>3.0-stable</option>
-<option value='3.1-stable'>3.1-stable</option>
-<option value='3.2-stable'>3.2-stable</option>
-<option value='3.3-stable'>3.3-stable</option>
-<option value='3.4-stable'>3.4-stable</option>
-<option value='3.5-stable'>3.5-stable</option>
-<option value='3.6-stable'>3.6-stable</option>
-<option value='3.7-stable'>3.7-stable</option>
-<option value='master' selected='selected'>master</option>
-</select> <input type='submit' value='switch'/></form></td></tr>
-<tr><td class='sub'>Main aports tree
-</td><td class='sub right'>gitolite</td></tr></table>
-<table class='tabs'><tr><td>
-<a href='/cgit/aports/about/'>about</a><a href='/cgit/aports/'>summary</a><a href='/cgit/aports/refs/'>refs</a><a href='/cgit/aports/log/main/nfs-utils/musl-getservbyport.patch'>log</a><a class='active' href='/cgit/aports/tree/main/nfs-utils/musl-getservbyport.patch'>tree</a><a href='/cgit/aports/commit/main/nfs-utils/musl-getservbyport.patch'>commit</a><a href='/cgit/aports/diff/main/nfs-utils/musl-getservbyport.patch'>diff</a><a href='/cgit/aports/stats/main/nfs-utils/musl-getservbyport.patch'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/aports/log/main/nfs-utils/musl-getservbyport.patch'>
-<select name='qt'>
-<option value='grep'>log msg</option>
-<option value='author'>author</option>
-<option value='committer'>committer</option>
-<option value='range'>range</option>
-</select>
-<input class='txt' type='text' size='10' name='q' value=''/>
-<input type='submit' value='search'/>
-</form>
-</td></tr></table>
-<div class='path'>path: <a href='/cgit/aports/tree/'>root</a>/<a href='/cgit/aports/tree/main'>main</a>/<a href='/cgit/aports/tree/main/nfs-utils'>nfs-utils</a>/<a href='/cgit/aports/tree/main/nfs-utils/musl-getservbyport.patch'>musl-getservbyport.patch</a></div><div class='content'>blob: 6fa589c7b750ce514f101120cbd75d9e42eee864 (<a href='/cgit/aports/plain/main/nfs-utils/musl-getservbyport.patch'>plain</a>)
-<table summary='blob content' class='blob'>
-<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
-<a id='n2' href='#n2'>2</a>
-<a id='n3' href='#n3'>3</a>
-<a id='n4' href='#n4'>4</a>
-<a id='n5' href='#n5'>5</a>
-<a id='n6' href='#n6'>6</a>
-<a id='n7' href='#n7'>7</a>
-<a id='n8' href='#n8'>8</a>
-<a id='n9' href='#n9'>9</a>
-<a id='n10' href='#n10'>10</a>
-<a id='n11' href='#n11'>11</a>
-<a id='n12' href='#n12'>12</a>
-<a id='n13' href='#n13'>13</a>
-<a id='n14' href='#n14'>14</a>
-<a id='n15' href='#n15'>15</a>
-<a id='n16' href='#n16'>16</a>
-<a id='n17' href='#n17'>17</a>
-<a id='n18' href='#n18'>18</a>
-</pre></td>
-<td class='lines'><pre><code>Musl will always return something with getservbyport so we cannot skip
+Musl will always return something with getservbyport so we cannot skip
 ports that returns non-null.
 
 diff --git a/utils/statd/rmtcall.c b/utils/statd/rmtcall.c
 index fd576d9..d72a0bf 100644
-<span style="color:#0057ae">--- a/utils/statd/rmtcall.c</span>
-<span style="color:#000000; font-weight:bold">+++ b/utils/statd/rmtcall.c</span>
-<span style="color:#010181">&#64;&#64; -93,8 +93,10 &#64;&#64;</span>
+--- a/utils/statd/rmtcall.c
++++ b/utils/statd/rmtcall.c
+@@ -93,8 +93,10 @@
  					__func__);
  			break;
  		}
-<span style="color:#000000; font-weight:bold">+#if 0</span>
- 		se = getservbyport(sin.sin_port, &quot;udp&quot;);
++#if 0
+ 		se = getservbyport(sin.sin_port, "udp");
  		if (se == NULL)
-<span style="color:#000000; font-weight:bold">+#endif</span>
++#endif
  			break;
  
  		if (retries == MAX_BRP_RETRIES) {
-</code></pre></td></tr></table>
-</div> <!-- class=content -->
-<script type="text/javascript">
-var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-<script type="text/javascript">
-try {
-var pageTracker = _gat._getTracker("UA-2804446-12");
-pageTracker._trackPageview();
-} catch(err) {}</script>
-</div> <!-- id=cgit -->
-</body>
-</html>
