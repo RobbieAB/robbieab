@@ -7,7 +7,6 @@ inherit autotools flag-o-matic toolchain-funcs multilib-minimal mercurial
 MY_P="SDL2-${PV}"
 DESCRIPTION="Simple Direct Media Layer"
 HOMEPAGE="http://www.libsdl.org"
-SRC_URI="http://www.libsdl.org/release/${MY_P}.tar.gz"
 EHG_REPO_URI="https://hg.libsdl.org/SDL"
 
 LICENSE="ZLIB"
@@ -84,9 +83,10 @@ PATCHES=(
 )
 
 src_unpack() {
+	
     mercurial_src_unpack
     # Can't set it at global scope due to mercurial.eclass limitations...
-    export S=${WORKDIR}/${P}/source
+    export S=${WORKDIR}/${P}
 }
 
 src_prepare() {
