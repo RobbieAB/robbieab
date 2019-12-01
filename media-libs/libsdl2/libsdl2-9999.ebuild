@@ -83,7 +83,11 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.10-static-libs.patch
 )
 
-S="${WORKDIR}/${MY_P}"
+src_unpack() {
+    mercurial_src_unpack
+    # Can't set it at global scope due to mercurial.eclass limitations...
+    export S=${WORKDIR}/${P}/source
+}
 
 src_prepare() {
 	default
