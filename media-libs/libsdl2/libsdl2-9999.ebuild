@@ -79,7 +79,7 @@ MULTILIB_WRAPPED_HEADERS=(
 
 PATCHES=(
 	# https://bugzilla.libsdl.org/show_bug.cgi?id=1431
-	"${FILESDIR}"/${PN}-2.0.10-static-libs.patch
+	#"${FILESDIR}"/${PN}-2.0.10-static-libs.patch
 )
 
 src_unpack() {
