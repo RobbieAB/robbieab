@@ -4,10 +4,9 @@
 EAPI=5
 
 inherit eutils flag-o-matic multilib toolchain-funcs
-
 DESCRIPTION="Embedded database library"
 HOMEPAGE="http://www.equi4.com/metakit/"
-SRC_URI="https://github.com/RobbieAB/metakit/archive/refs/tags/2.4.9.7.tar.gz"
+SRC_URI="https://github.com/RobbieAB/metakit/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
